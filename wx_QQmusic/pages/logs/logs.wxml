@@ -1,0 +1,7 @@
+<view class="container log-list">
+  <block wx:for="{{logs}}" wx:for-item="log">
+    <text class="log-item"> {{log}}</text>
+  </block>
+
+  <map longitude="116.3603210449" latitude="39.9823159006"></map>
+</view>

@@ -1,0 +1,55 @@
+/**index.wxss**/
+.userinfo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.userinfo-avatar {
+  width: 128rpx;
+  height: 128rpx;
+  margin: 20rpx;
+  border-radius: 50%;
+}
+
+.userinfo-nickname {
+  color: #f60;
+}
+.swiper-container {
+  width: 100%;
+  position: relative
+}
+.swiper {
+  height: 150px;
+}
+.swiper .navigator {
+  height: 100%;
+}
+.swiper image {
+  width: 100%;
+  height: 150px;
+  display: block;
+}
+.dots {
+  width: 100%;
+  text-align: center;
+  height: 10px;
+  position: absolute;
+  bottom: 10px;
+  font-size: 0;
+}
+.dots .dot {
+  background: #ddd;
+  width: 10px;
+  height: 10px;
+  border-radius: 5px;
+  display: inline-block;
+  margin-left: 15px;
+  transition: width 200ms;
+}
+
+.dots .active {
+  background: #fff;
+  width: 16px;
+  box-shadow: 0 0 15px 3px #31c27c;
+}

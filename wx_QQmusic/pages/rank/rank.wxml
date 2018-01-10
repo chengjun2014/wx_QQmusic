@@ -1,0 +1,23 @@
+
+
+<template name="album">
+  <view class='album flexBox'>
+    <view class='album-img'>
+      <image src="{{item.picUrl}}"></image>
+      <text class='listenCount'>{{item.listenCount / 10000}}万</text>
+    </view>
+    <view class='album-content'>
+      {{item.topTitle}}
+
+      <block wx:for="{{item.songList}}" wx:for-item="i" wx:key='unique'>
+        <view class="songList">{{index + 1}} {{i.songname}} - {{i.singername}}</view>
+      </block>
+    </view>
+  </view>
+</template>
+
+
+
+<block wx:for="{{topList}}" wx:key='unique'>
+  <template is="album" data="{{item}}" />
+</block>

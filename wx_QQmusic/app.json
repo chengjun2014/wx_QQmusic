@@ -1,0 +1,31 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/logs/logs",
+    "pages/search/search",
+    "pages/rank/rank"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#31c27c",
+    "navigationBarTitleText": "QQ音乐",
+    "navigationBarTextStyle": "white"
+  },
+  "tabBar": {
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "推荐"
+      },
+      {
+        "pagePath": "pages/rank/rank",
+        "text": "排行榜"
+      },
+      {
+        "pagePath": "pages/search/search",
+        "text": "搜索"
+      }
+    ],
+    "position": "top"
+  }
+}

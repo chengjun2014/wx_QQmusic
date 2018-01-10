@@ -1,0 +1,23 @@
+<view class="container">
+  <view class='swiper-container'>
+    <swiper class='swiper' interval='3500' autoplay="{{true}}" bindchange='changeHandler' circular="{{true}}">
+      <block wx:for="{{slider}}" wx:key="unique">
+        <swiper-item>
+          <navigator url="{{item.linkUrl}}">
+            <image src="{{item.picUrl}}" />
+          </navigator>
+        </swiper-item>
+      </block>
+    </swiper>
+    <view class='dots'>
+      <block wx:for="{{slider}}" wx:key="unique">
+        <view class='dot {{index == current ? " active" : ""}}'></view>
+      </block>
+    </view>
+  </view>
+
+  <view  bindtap="bindViewTap" class="userinfo">
+    <image class="userinfo-avatar" src="{{userInfo.avatarUrl}}" background-size="cover"></image>
+    <text class="userinfo-nickname">{{userInfo.nickName}}</text>
+  </view>
+</view>  

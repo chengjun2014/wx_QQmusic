@@ -1,0 +1,17 @@
+<view class='input-wrap'>
+  <view class="input-outer">
+    <icon type="search" size='20'></icon>
+    <input value="" placeholder='搜索歌曲、歌单、专辑'></input>
+    <text>取消</text>
+  </view>
+  
+</view>
+<view class='hot-search'>
+  <rich-text nodes="{{title}}"></rich-text>
+  <view>
+    <text class="hot-key special">{{special.key}}</text>
+    <block wx:for="{{hotSearch}}" wx:key="unique">
+      <text class="hot-key" wx:if="{{index < 10}}">{{item.k}}</text>
+    </block>
+  </view>
+</view>
