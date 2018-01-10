@@ -9,9 +9,9 @@
 <view class='hot-search'>
   <rich-text nodes="{{title}}"></rich-text>
   <view>
-    <text class="hot-key special">{{special.key}}</text>
+    <text bindtap='search' data-key="{{special.key}}" class="hot-key special">{{special.key}}</text>
     <block wx:for="{{hotSearch}}" wx:key="unique">
-      <text class="hot-key" wx:if="{{index < 10}}">{{item.k}}</text>
+      <text bindtap='search' data-key="{{item.k}}" class="hot-key" wx:if="{{index < 10}}">{{item.k}}</text>
     </block>
   </view>
 </view>

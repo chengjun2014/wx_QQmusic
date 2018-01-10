@@ -18,6 +18,10 @@ Page({
     special: {}
   },
 
+  search: function(ev) {
+    console.log(ev.target.dataset.key);
+  },
+
   /**
    * 生命周期函数--监听页面加载
    */
