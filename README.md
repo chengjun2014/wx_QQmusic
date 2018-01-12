@@ -16,4 +16,5 @@
 - input 高度太小（20px）聚焦时placeholder莫名其妙的往上跳了一点点，24px不跳动
 
 
-
+## 演示图片
+![](https://github.com/chengjun2014/wx_QQmusic/blob/master/demo.gif)
