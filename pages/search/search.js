@@ -14,12 +14,99 @@ Page({
         text: '热门搜索'
       }]
     }],
-    hotSearch: ['aaa', 'aaaaa', 'cvxcvz'],
-    special: {}
+    key: '',
+    hotSearch: [],
+    special: {},
+    showResult: false,
+    searchResult: [],
+    searchPageNo: 1,
+    searchPageSize: 30,
+    focus: false,
+    finish: false
   },
 
   search: function(ev) {
-    console.log(ev.target.dataset.key);
+    var key = (ev.target.dataset.key || this.data.key).trim();
+    var that = this;
+    if (this.data.finish) {
+      wx.showToast({
+        title: '暂无更多！'
+      });
+      return;
+    }
+    wx.request({
+      url: 'https://c.y.qq.com/soso/fcgi-bin/search_for_qq_cp',
+      data: {
+        g_tk: 5381,
+        uin: 0,
+        format: 'json',
+        inCharset: 'utf-8',
+        outCharset: 'utf-8',
+        notice: 0,
+        platform: 'h5',
+        needNewCode: 1,
+        w: key,
+        zhidaqu: 1,
+        catZhida: 1,
+        t: 0,
+        flag: 1,
+        ie: 'utf-8',
+        n: this.data.searchPageSize,
+        p: this.data.searchPageNo
+      },
+      success: function(res) {
+        if (res.statusCode == 200) {
+          var _data = res.data.data.song;
+          console.log(_data.list, '_data');
+          if (that.data.searchPageNo * that.data.searchPageSize < _data.totalnum) {
+            that.setData({
+              searchPageNo: ++that.data.searchPageNo
+            });
+          } else {
+            that.setData({
+              finish: true
+            });
+          }
+          that.setData({
+            searchResult: [...that.data.searchResult, ..._data.list]
+          });
+
+        } else {
+          wx.showToast({
+            title: '获取'+key+'搜索失败！'
+          });
+        }
+      }
+    })
+    
+    this.setData({
+      key: key,
+      showResult: true
+    })
+  },
+
+  input: function() {
+    console.log(12)
+  },
+
+  focusFn: function() {
+    this.setData({
+      focus: true
+    })
+  },
+  blurFn: function () {
+    var that = this;
+    setTimeout(function() {
+      that.setData({
+        focus: false
+      });
+    }, 200);
+  },
+
+  cancel: function() {
+    this.setData({
+      showResult: false
+    })
   },
 
   /**
@@ -45,7 +132,6 @@ Page({
         notice: 0,
         platform: 'h5',
         needNewCode: 1,
-        _: new Date().getTime(),
         jsonp: 'jsonpCallback'
       },
       success: function (res) {

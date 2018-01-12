@@ -1,4 +1,7 @@
 /* pages/search/search.wxss */
+page {
+  height: 100%;
+}
 .input-wrap {
   width: 100%;
   padding: 10px;
@@ -7,19 +10,30 @@
 }
 
 .input-wrap .input-outer {
-  background-color: #fff;
-  vertical-align: middle;
-  height: 20px;
-  padding: 8px;
   display: flex;
-  font-size: 14px;
 }
-
+.input-wrap .input-outer text {
+  line-height: 36px;
+  font-size: 14px;
+  padding: 0 8px;
+  margin-right: -8px;
+}
+.input-wrap .input-inner {
+  background-color: #fff;
+  display: flex;
+  flex: 1;
+  height: 24px;
+  padding: 6px;
+}
+.input-wrap icon {
+  height: 20px;
+  margin-top: 2px;
+}
 .input-wrap input {
   margin: 0 8px;
   background-color: #fff;
-  height: 20px;
-  min-height: 20px;
+  height: 24px;
+  min-height: 24px;
   display: inline-block;
   flex: 1;
   font-size: 14px;
@@ -45,4 +59,39 @@
 .hot-search .special {
   border-color: #f30;
   color: #f30;
+}
+
+.outer {
+  position: relative;
+  height: 100%;
+}
+.outer .searchResult {
+  position: absolute;
+  width: 100%;
+  top: 0;
+  bottom: 0;
+  background-color: #fff;
+}
+.outer .searchResult .icon {
+  width: 36px;
+  height: 36px;
+  background-color: #333;
+  border-radius: 50%;
+  margin-right: 10px;
+}
+
+.searchResult .flexBox {
+  padding: 7px 10px;
+  border-bottom: 1px solid #e3e3e3;
+}
+.searchResult .flexBox .flex{
+  overflow: hidden;
+}
+.searchResult .main-title {
+  font-size: 16px;
+  color: #333;
+}
+.searchResult .sub-title {
+  font-size: 12px;
+  color: #808080;
 }
