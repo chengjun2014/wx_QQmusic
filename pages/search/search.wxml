@@ -2,7 +2,7 @@
   <view class="input-outer">
     <view class='input-inner'>
       <icon type="search" size='20'></icon>
-      <input type='text' bindinput="input" bindblur="blurFn" bindfocus="focusFn" placeholder='搜索歌曲、歌单、专辑' confirm-type='search'></input>
+      <input type='text' bindinput="input" bindblur="blurFn" bindfocus="focusFn" placeholder='搜索歌曲、歌单、专辑' bindconfirm="search" value="{{key}}" confirm-type='search'></input>
     </view>
     <text bindtap='cancel' wx:if="{{focus}}">取消</text>
   </view>
@@ -20,6 +20,19 @@
   </view>
 
   <scroll-view class="searchResult" scroll-y wx:if="{{showResult}}" bindscrolltolower="search">
+    <block wx:if="{{zhida.type > 0}}">
+      <view class='flexBox'>
+        <view class='icon flexCenter'><image src="http://y.gtimg.cn/music/photo_new/T001R68x68M000{{zhida.singermid}}.jpg"></image></view>
+
+        <view class="flex">
+          <view class='main-title nowrap'>{{zhida.singername}}</view>
+          <view class='sub-title nowrap'>
+            单曲：{{zhida.songnum}} 专辑：{{zhida.albumnum}}
+          </view>
+        </view>
+      </view>
+    </block>
+
     <block wx:for="{{searchResult}}" wx:key="unique">
       <view class='flexBox'>
         <view class='icon flexCenter'></view>

@@ -14,7 +14,10 @@
 - `navigationBar` 不能修改 `font-size` 样式
 - 没有Vue插件丰富，比Vue好的是同一页面不会重复载入
 - input 高度太小（20px）聚焦时placeholder莫名其妙的往上跳了一点点，24px不跳动
+- 代码包大小上限为 2048 kb，实际项目需要删除demo.gif
+- input 如何做数据绑定？ 已解决参考搜索页面输入框源码
+- 字符串拼接 `src="strA{{zhida.singermid}}strB"`
 
 
 ## 演示图片
-![](https://github.com/chengjun2014/wx_QQmusic/blob/master/demo.gif)
+![](https://github.com/chengjun2014/f_grid/blob/master/demo.gif)

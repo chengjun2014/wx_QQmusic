@@ -22,18 +22,31 @@ Page({
     searchPageNo: 1,
     searchPageSize: 30,
     focus: false,
-    finish: false
+    finish: false,
+    zhida: {}, // type 0: 单曲 2：歌手 3：专辑
+    isShown: false // 提示暂无更多弹窗只显示一次
   },
 
   search: function(ev) {
-    var key = (ev.target.dataset.key || this.data.key).trim();
+    var key = (ev.detail.value || ev.target.dataset.key || this.data.key).trim();
     var that = this;
     if (this.data.finish) {
-      wx.showToast({
-        title: '暂无更多！'
-      });
+      if (!this.data.isShown) {
+        this.setData({
+          isShown: true
+        });
+        wx.showToast({
+          title: '暂无更多！'
+        });
+      }
+     
       return;
+    } else {
+      wx.showLoading({
+        title: '加载中...'
+      });
     }
+
     wx.request({
       url: 'https://c.y.qq.com/soso/fcgi-bin/search_for_qq_cp',
       data: {
@@ -56,9 +69,10 @@ Page({
       },
       success: function(res) {
         if (res.statusCode == 200) {
-          var _data = res.data.data.song;
-          console.log(_data.list, '_data');
-          if (that.data.searchPageNo * that.data.searchPageSize < _data.totalnum) {
+          var _data = res.data.data;
+          wx.hideLoading();
+
+          if (that.data.searchPageNo * that.data.searchPageSize < _data.song.totalnum) {
             that.setData({
               searchPageNo: ++that.data.searchPageNo
             });
@@ -67,8 +81,13 @@ Page({
               finish: true
             });
           }
+          if (_data.zhida.type) {
+            that.setData({
+              zhida: _data.zhida
+            });
+          }
           that.setData({
-            searchResult: [...that.data.searchResult, ..._data.list]
+            searchResult: [...that.data.searchResult, ..._data.song.list]
           });
 
         } else {
@@ -86,7 +105,9 @@ Page({
   },
 
   input: function() {
-    console.log(12)
+    this.setData({
+      isShown: false
+    });
   },
 
   focusFn: function() {
