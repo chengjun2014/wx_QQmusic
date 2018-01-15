@@ -3,6 +3,7 @@
     <view class='input-inner'>
       <icon type="search" size='20'></icon>
       <input type='text' bindinput="input" bindblur="blurFn" bindfocus="focusFn" placeholder='搜索歌曲、歌单、专辑' bindconfirm="search" value="{{key}}" confirm-type='search'></input>
+      <icon type="clear" wx:if="{{focus2}}" size='20' bindtap='clear'></icon>
     </view>
     <text bindtap='cancel' wx:if="{{focus}}">取消</text>
   </view>
@@ -21,20 +22,34 @@
 
   <scroll-view class="searchResult" scroll-y wx:if="{{showResult}}" bindscrolltolower="search">
     <block wx:if="{{zhida.type > 0}}">
-      <view class='flexBox'>
-        <view class='icon flexCenter'><image src="http://y.gtimg.cn/music/photo_new/T001R68x68M000{{zhida.singermid}}.jpg"></image></view>
+      <view class='flexBox' data-singermid="{{zhida.singermid}}">
+        <view class='icon flexCenter {{zhida.type == 2 ? "round" : ""}}'>
+          <block wx:if="{{zhida.type == 3}}">
+            <image src="https://y.gtimg.cn/music/photo_new/T002R68x68M000{{zhida.albummid}}.jpg"></image>
+          </block>
+          <block wx:if="{{zhida.type == 2}}">
+            <image src="http://y.gtimg.cn/music/photo_new/T001R68x68M000{{zhida.singermid}}.jpg"></image>
+          </block>
+        </view>
 
         <view class="flex">
           <view class='main-title nowrap'>{{zhida.singername}}</view>
-          <view class='sub-title nowrap'>
-            单曲：{{zhida.songnum}} 专辑：{{zhida.albumnum}}
-          </view>
+          <block wx:if="{{zhida.type == 3}}">
+            <view class='sub-title nowrap'>
+              {{zhida.singername}}
+            </view>
+          </block>
+          <block wx:if="{{zhida.type == 2}}">
+            <view class='sub-title nowrap'>
+              单曲：{{zhida.songnum}} 专辑：{{zhida.albumnum}}
+            </view>
+          </block>
         </view>
       </view>
     </block>
 
     <block wx:for="{{searchResult}}" wx:key="unique">
-      <view class='flexBox'>
+      <view class='flexBox' data-songId="{{item.songmid}}">
         <view class='icon flexCenter'></view>
 
         <view class="flex">
@@ -47,5 +62,6 @@
         </view>
       </view>
     </block>
+    <view class='finish' wx:if="{{finish}}">已加载全部</view>
   </scroll-view>
 </view>

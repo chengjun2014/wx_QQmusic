@@ -1,10 +1,10 @@
-
+<wxs module="format" src="../utils/tool.wxs"></wxs>
 
 <template name="album">
   <view class='album flexBox'>
     <view class='album-img'>
       <image src="{{item.picUrl}}"></image>
-      <text class='listenCount'>{{item.listenCount / 10000}}万</text>
+      <text class='listenCount'>{{format.toFixed(item.listenCount)}}</text>
     </view>
     <view class='album-content'>
       {{item.topTitle}}

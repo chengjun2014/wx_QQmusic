@@ -22,14 +22,32 @@ Page({
     searchPageNo: 1,
     searchPageSize: 30,
     focus: false,
+    focus2: false, // 输入框聚焦切非空
     finish: false,
     zhida: {}, // type 0: 单曲 2：歌手 3：专辑
     isShown: false // 提示暂无更多弹窗只显示一次
   },
 
   search: function(ev) {
+    // input点击完成按钮时触发搜索，event.detail = { value: value }
+    // 快捷操作点击推荐热搜词时 触发搜索 ev.target.dataset
+    // this.data.key 滚动时触发搜索使用这个
     var key = (ev.detail.value || ev.target.dataset.key || this.data.key).trim();
     var that = this;
+    if (key === '') {
+      return;
+    }
+
+    if (key != this.data.key) { // 执行一次新的搜索
+      this.setData({
+        finish: false,
+        isShown: false,
+        searchPageNo: 1,
+        zhida: {},
+        searchResult: []
+      });
+    }
+
     if (this.data.finish) {
       if (!this.data.isShown) {
         this.setData({
@@ -39,7 +57,6 @@ Page({
           title: '暂无更多！'
         });
       }
-     
       return;
     } else {
       wx.showLoading({
@@ -104,22 +121,27 @@ Page({
     })
   },
 
-  input: function() {
+  input: function(ev) {
+    var _key = ev.detail.value.trim();
     this.setData({
-      isShown: false
+      isShown: false,
+      key: _key,
+      focus2: _key !== '' ? true : false
     });
   },
 
   focusFn: function() {
     this.setData({
-      focus: true
-    })
+      focus: true,
+      focus2: this.data.key !== '' ? true : false
+    });
   },
   blurFn: function () {
     var that = this;
     setTimeout(function() {
       that.setData({
-        focus: false
+        focus: false,
+        focus2: false
       });
     }, 200);
   },
@@ -128,6 +150,13 @@ Page({
     this.setData({
       showResult: false
     })
+  },
+
+  clear: function() {
+    this.setData({
+      key: '',
+      showResult: false
+    });
   },
 
   /**
