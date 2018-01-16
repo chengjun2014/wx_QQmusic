@@ -18,6 +18,7 @@
 - input 如何做数据绑定？ 已解决参考搜索页面输入框源码
 - 字符串拼接 `src="strA{{zhida.singermid}}strB"` 无需使用 `+` 号，注意被拼接字符串放在双引号内；
 - wxml中计算后的模板数据不支持`toFixed`函数格式化，需要引入[wxs模板](https://mp.weixin.qq.com/debug/wxadoc/dev/framework/view/wxs/01wxs-module.html)或标签封装一个函数，export出去；
+- 组件系统有点坑，先不用组件实现一下，后续有时间再拆分组件吧。事件传递比较麻烦，每次需要增加一大堆路径和文件；
 
 
 

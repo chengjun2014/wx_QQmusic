@@ -1,0 +1,14 @@
+/* pages/search/comp/hotSearch/index.wxss */
+.hot-key {
+  border: 1px solid #333;
+  padding: 0 10px;
+  border-radius: 14px;
+  margin: 10px 10px 0 0;
+  line-height: 28px;
+  height: 28px;
+  display: inline-block;
+}
+.special {
+  border-color: #f30;
+  color: #f30;
+}

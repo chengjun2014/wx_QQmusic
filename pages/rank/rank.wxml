@@ -1,7 +1,7 @@
 <wxs module="format" src="../utils/tool.wxs"></wxs>
 
 <template name="album">
-  <view class='album flexBox'>
+  <view class='album flexBox' data-id="{{item.id}}" bindtap='toAlbum'>
     <view class='album-img'>
       <image src="{{item.picUrl}}"></image>
       <text class='listenCount'>{{format.toFixed(item.listenCount)}}</text>
@@ -15,8 +15,6 @@
     </view>
   </view>
 </template>
-
-
 
 <block wx:for="{{topList}}" wx:key='unique'>
   <template is="album" data="{{item}}" />

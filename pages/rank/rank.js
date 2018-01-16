@@ -8,6 +8,14 @@ Page({
     topList: []
   },
 
+  toAlbum: function(event) {
+    var _id = event.currentTarget.dataset.id;
+    
+    wx.navigateTo({
+      url: '/pages/album/index?id=' + _id
+    });
+  },
+
   /**
    * 生命周期函数--监听页面加载
    */

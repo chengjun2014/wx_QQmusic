@@ -2,7 +2,10 @@
   "pages": [
     "pages/index/index",
     "pages/search/search",
-    "pages/rank/rank"
+    "pages/rank/rank",
+    "pages/album/index",
+    "pages/playing/index",
+    "pages/singer/index"
   ],
   "window": {
     "backgroundTextStyle": "light",

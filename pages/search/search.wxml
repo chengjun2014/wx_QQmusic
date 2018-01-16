@@ -10,16 +10,6 @@
 </view>
 
 <view class="outer">
-  <view class='hot-search'>
-    <rich-text nodes="{{title}}"></rich-text>
-    <view>
-      <text bindtap='search' data-key="{{special.key}}" class="hot-key special">{{special.key}}</text>
-      <block wx:for="{{hotSearch}}" wx:key="unique">
-        <text bindtap='search' data-key="{{item.k}}" class="hot-key" wx:if="{{index < 10}}">{{item.k}}</text>
-      </block>
-    </view>
-  </view>
-
   <scroll-view class="searchResult" scroll-y wx:if="{{showResult}}" bindscrolltolower="search">
     <block wx:if="{{zhida.type > 0}}">
       <view class='flexBox' data-singermid="{{zhida.singermid}}">
@@ -64,4 +54,14 @@
     </block>
     <view class='finish' wx:if="{{finish}}">已加载全部</view>
   </scroll-view>
+
+  <view class='hot-search' wx:else>
+    <rich-text nodes="{{title}}"></rich-text>
+    <view>
+      <text bindtap='search' data-key="{{special.key}}" class="hot-key special">{{special.key}}</text>
+      <block wx:for="{{hotSearch}}" wx:key="unique">
+        <text bindtap='search' data-key="{{item.k}}" class="hot-key" wx:if="{{index < 10}}">{{item.k}}</text>
+      </block>
+    </view>
+  </view>
 </view>
