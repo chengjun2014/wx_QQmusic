@@ -30,6 +30,7 @@ App({
   },
   globalData:{
     userInfo:null,
-    slider: []
+    slider: [],
+    playingList: []
   }
 })

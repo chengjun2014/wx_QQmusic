@@ -1,2 +1,31 @@
-<!--pages/album/index.wxml-->
-<text>pages/album/index.wxml</text>
+
+<template name="abc">
+  <block wx:for="{{array}}" wx:key="key">
+    <text><block wx:if="{{index > 0}}"> / </block>{{item.name}}</text>
+  </block>
+</template>
+
+<view class='topInfo'>
+  <image class='bg_img' src="{{topInfo.pic_album}}"></image>
+  <view class='mask' style="color:{{color}}"></view>
+  <view class='top'>
+    <view class='title'>{{topInfo.ListName}}</view>
+    {{updateTime}} 更新
+  </view>
+</view>
+
+<view class='song-wrap' style="background-color: {{color}}">
+  <block wx:for="{{songList}}" wx:key="u">
+    <navigator class="song-item flexBox" url="../playing/index?id={{item.data.songid}}">
+      <view class='index flexCenter'>{{index + 1}}</view>
+      <view class='flex flex-content'>
+        <view class='songname'>{{item.data.songname}}</view>
+        <view class='songExt nowrap'>
+          <template is="abc" data="{{array: item.data.singer}}" />
+           · {{item.data.albumname}}
+        <block wx:if="{{item.data.albumdesc != ''}}"> · {{item.data.albumdesc}}</block>
+        </view>
+      </view>
+    </navigator>
+  </block>
+</view>
