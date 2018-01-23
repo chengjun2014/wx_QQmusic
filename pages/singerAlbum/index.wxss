@@ -1,0 +1,65 @@
+/* pages/singerAlbum/index.wxss */
+.top {
+  height: 274px;
+  position: relative;
+  overflow: hidden;
+}
+.top .albumBgImg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  transform: scale(1.1) translateZ(0);
+  object-fit: cover;
+  filter: blur(36px);
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+}
+.top .mask {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0,0,0,.5);
+  z-index: 0;
+}
+.top .downloadBar {
+  font-size: 16px;
+  height: 48px;
+  line-height: 48px;
+  padding: 0 16px 0 14px;
+  color: #fff;
+  background: rgba(0,0,0,.2);
+  position: relative;
+  z-index: 1;
+}
+.top .albumPic {
+  width: 125px;
+  height: 125px;
+  margin-right: 10px;
+}
+.top .singerPic {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  margin-right: 10px;
+}
+.top .flexBox {
+  position: relative;
+  color: #fff;
+  z-index: 1;
+  padding: 18px 0 0 16px;
+  align-items: center;
+  font-size: 16px;
+}
+.top .flexBox .singer {
+  font-size: 14px;
+  padding: 8px 0 5px 0;
+}
+.top .flexBox .singer .singerPic, .top .flexBox .singer text {
+  vertical-align: middle;
+}
+.top .flexBox .time {
+  font-size: 12px;
+}

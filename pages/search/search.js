@@ -21,11 +21,13 @@ Page({
     searchResult: [],
     searchPageNo: 1,
     searchPageSize: 30,
-    focus: false,
-    focus2: false, // 输入框聚焦切非空
+    focus: false, // 控制取消按钮
+    focus2: false, // 控制清空按钮，输入框聚焦切非空
     finish: false,
     zhida: {}, // type 0: 单曲 2：歌手 3：专辑
-    isShown: false // 提示暂无更多弹窗只显示一次
+    isShown: false, // 提示暂无更多弹窗只显示一次
+    hisArray: [],
+    showHisory: false
   },
 
   search: function(ev) {
@@ -46,6 +48,17 @@ Page({
         zhida: {},
         searchResult: []
       });
+      // push to history array
+      var _index = this.data.hisArray.indexOf(key);
+      if (_index > -1) {
+        this.data.hisArray.splice(_index, 1);
+      }
+      this.setData({
+        hisArray: [key, ...this.data.hisArray]
+      });
+      
+      var _app = getApp();
+      _app.globalData.hisArray = this.data.hisArray;
     }
 
     if (this.data.finish) {
@@ -135,6 +148,14 @@ Page({
       focus: true,
       focus2: this.data.key !== '' ? true : false
     });
+
+    var _app = getApp();
+    if (_app.globalData.hisArray.length) {
+      this.setData({
+        showResult: false,
+        showHistory: true
+      });
+    }
   },
   blurFn: function () {
     var that = this;
@@ -148,7 +169,9 @@ Page({
 
   cancel: function() {
     this.setData({
-      showResult: false
+      key: '',
+      showResult: false,
+      showHistory: false
     })
   },
 
@@ -158,12 +181,24 @@ Page({
       showResult: false
     });
   },
+  clearHis: function() {
+    var _app = getApp();
+    _app.globalData.hisArray = [];
+    this.setData({
+      hisArray: [],
+      showHistory: false,
+      key: ''
+    });
+  },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-  
+    var _app = getApp();
+    this.setData({
+      hisArray: _app.globalData.hisArray
+    });
   },
 
   /**
@@ -171,6 +206,7 @@ Page({
    */
   onReady: function () {
     var that = this;
+    
     wx.request({
       url: 'https://c.y.qq.com/splcloud/fcgi-bin/gethotkey.fcg',
       data: {

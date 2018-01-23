@@ -3,7 +3,7 @@
     <view class='input-inner'>
       <icon type="search" size='20'></icon>
       <input type='text' bindinput="input" bindblur="blurFn" bindfocus="focusFn" placeholder='搜索歌曲、歌单、专辑' bindconfirm="search" value="{{key}}" confirm-type='search'></input>
-      <icon type="clear" wx:if="{{focus2}}" size='20' bindtap='clear'></icon>
+      <icon type="clear" color="#c8c8c8" wx:if="{{focus2}}" size='20' bindtap='clear'></icon>
     </view>
     <text bindtap='cancel' wx:if="{{focus}}">取消</text>
   </view>
@@ -12,54 +12,69 @@
 <view class="outer">
   <scroll-view class="searchResult" scroll-y wx:if="{{showResult}}" bindscrolltolower="search">
     <block wx:if="{{zhida.type > 0}}">
-      <view class='flexBox' data-singermid="{{zhida.singermid}}">
-        <view class='icon flexCenter {{zhida.type == 2 ? "round" : ""}}'>
-          <block wx:if="{{zhida.type == 3}}">
+      <block wx:if="{{zhida.type == 3}}">
+        <navigator url="../singerAlbum/index?albumId={{zhida.albummid}}" class='flexBox'>
+          <view class='icon flexCenter'>
             <image src="https://y.gtimg.cn/music/photo_new/T002R68x68M000{{zhida.albummid}}.jpg"></image>
-          </block>
-          <block wx:if="{{zhida.type == 2}}">
-            <image src="http://y.gtimg.cn/music/photo_new/T001R68x68M000{{zhida.singermid}}.jpg"></image>
-          </block>
-        </view>
+          </view>
 
-        <view class="flex">
-          <view class='main-title nowrap'>{{zhida.singername}}</view>
-          <block wx:if="{{zhida.type == 3}}">
+          <view class="flex">
+            <view class='main-title nowrap'>{{zhida.singername}}</view>
             <view class='sub-title nowrap'>
               {{zhida.singername}}
             </view>
-          </block>
-          <block wx:if="{{zhida.type == 2}}">
+          </view>
+        </navigator>
+      </block>
+      <block wx:else>
+        <navigator url="../singer/index?singerId={{zhida.singermid}}" class='flexBox'>
+          <view class='icon flexCenter round'>
+            <image src="http://y.gtimg.cn/music/photo_new/T001R68x68M000{{zhida.singermid}}.jpg"></image>
+          </view>
+
+          <view class="flex">
+            <view class='main-title nowrap'>{{zhida.singername}}</view>
             <view class='sub-title nowrap'>
               单曲：{{zhida.songnum}} 专辑：{{zhida.albumnum}}
             </view>
-          </block>
-        </view>
-      </view>
+          </view>
+        </navigator>
+      </block>
     </block>
 
     <block wx:for="{{searchResult}}" wx:key="unique">
-      <view class='flexBox' data-songId="{{item.songmid}}">
+      <navigator url="../playing/index?songId={{item.songmid}}" class='flexBox'>
         <view class='icon flexCenter'></view>
 
         <view class="flex">
           <view class='main-title nowrap'>{{item.songname}}</view>
           <view class='sub-title nowrap'>
-            <block wx:for="{{item.singer}}" wx:key="unique">
+            <block wx:for="{{item.singer}}" wx:key="unique0">
               <text><block wx:if="{{index > 0}}"> / </block>{{item.name}}</text>
             </block>
           </view>
         </view>
-      </view>
+      </navigator>
     </block>
     <view class='finish' wx:if="{{finish}}">已加载全部</view>
+  </scroll-view>
+
+  <scroll-view class="history" scroll-y wx:elif="{{showHistory}}">
+    <block wx:for="{{hisArray}}" wx:key="unique1">
+      <view class='his-item'>
+        <image class="clock icon" src="https://y.gtimg.cn/mediastyle/mobile/yqq_v5/img/clock_ic.png"></image>
+        <text bindtap='search' data-key="{{item}}">{{item}}</text>
+        <view class="icon remove"></view>
+      </view>
+    </block>
+    <view class='clearHis' bindtap='clearHis'>清除搜索记录</view>
   </scroll-view>
 
   <view class='hot-search' wx:else>
     <rich-text nodes="{{title}}"></rich-text>
     <view>
       <text bindtap='search' data-key="{{special.key}}" class="hot-key special">{{special.key}}</text>
-      <block wx:for="{{hotSearch}}" wx:key="unique">
+      <block wx:for="{{hotSearch}}" wx:key="unique2">
         <text bindtap='search' data-key="{{item.k}}" class="hot-key" wx:if="{{index < 10}}">{{item.k}}</text>
       </block>
     </view>

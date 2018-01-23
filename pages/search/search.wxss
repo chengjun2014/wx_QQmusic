@@ -110,3 +110,36 @@ page {
   line-height: 40px;
   color: #808080;
 }
+
+.history {
+  font-size: 14px;
+}
+.history .his-item {
+  padding: 0 45px;
+  height: 44px;
+  line-height: 44px;
+  border-bottom: 1px solid #e3e3e3;
+  position: relative;
+}
+.history .his-item .icon {
+  position: absolute;
+  top: 12px;
+  width: 20px;
+  height: 20px;
+}
+.history .his-item text {
+  display: block;
+}
+.history .his-item .clock {
+  left: 16px;
+}
+.history .his-item .remove {
+  right: 16px;
+  background-color: #e3e3e3;
+}
+.history .clearHis {
+  text-align: center;
+  color: #47c88a;
+  height: 44px;
+  line-height: 44px;
+}

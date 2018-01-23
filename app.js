@@ -31,6 +31,7 @@ App({
   globalData:{
     userInfo:null,
     slider: [],
-    playingList: []
+    playingList: [],
+    hisArray: []
   }
 })

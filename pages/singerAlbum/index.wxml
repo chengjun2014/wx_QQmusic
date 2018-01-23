@@ -1,0 +1,35 @@
+<!--pages/singerAlbum/index.wxml-->
+<view class='top'>
+  <image class='albumBgImg' src="https://y.gtimg.cn/music/photo_new/T002R150x150M000{{albumPic}}.jpg?max_age=2592000"></image>
+  <view class="mask"></view>
+  <view class='downloadBar'>客户端下载引导（不想做了）</view>
+  <view class='flexBox'>
+    <image class='albumPic' src="https://y.gtimg.cn/music/photo_new/T002R150x150M000{{albumPic}}.jpg?max_age=2592001"></image>
+    <view class='flexItem'>
+      <text>{{albumName}}</text>
+      <view class='singer'>
+        <image class='singerPic' src='https://y.gtimg.cn/music/photo_new/T001R150x150M000{{singerPic}}.jpg?max_age=2592002'></image>{{singerName}}
+      </view>
+      
+      <text class='time'>发行时间：{{posterTime}}</text>
+    </view>
+  </view>
+</view>
+
+<view class='album'>
+  <view class="title">
+    <text>专辑 共{{list.length}}首</text>
+  </view>
+</view>
+
+<view class='albumInfo'>
+
+</view>
+
+<view class='comment'>
+
+</view>
+
+<view class='otherAlbum'>
+
+</view>
