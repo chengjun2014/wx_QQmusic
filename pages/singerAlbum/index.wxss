@@ -25,7 +25,7 @@
   z-index: 0;
 }
 .top .downloadBar {
-  font-size: 16px;
+  font-size: 15px;
   height: 48px;
   line-height: 48px;
   padding: 0 16px 0 14px;
@@ -62,4 +62,119 @@
 }
 .top .flexBox .time {
   font-size: 12px;
+}
+.album {
+  color: #777;
+  font-size: 14px;
+}
+.album .subTitle {
+  height: 40px;
+  line-height: 40px;
+  padding: 0 16px;
+}
+.album .singerWrap {
+  font-size: 12px;
+}
+
+.album .index {
+  text-align: center;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  width: 45px;
+  -webkit-box-pack: center;
+  font-size: 16px;
+}
+.album .songName {
+  font-size: 16px;
+}
+.album .flexBox {
+  padding: 10px 0;
+}
+.albumInfo {
+  font-size: 14px;
+  color: #777;
+  padding: 0 16px;
+  line-height: 21px;
+}
+.title {
+  text-align: center;
+  font-size: 18px;
+  letter-spacing: 5px;
+  color: #000;
+  height: 55px;
+  line-height: 55px;
+}
+
+.comment {
+  padding: 0 16px;
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.comment .flexBox {
+  margin-bottom: 10px;
+}
+
+.comment .commentUser {
+  width: 35px;
+  height: 35px;
+  display: block;
+  border-radius: 50%;
+  margin-right: 10px;
+}
+.comment .header {
+  position: relative;
+  color: #777;
+  font-size: 12px;
+}
+.comment .header .commentName {
+  font-size: 14px;
+}
+.comment .header .supportNum {
+  position: absolute;
+  right: 0px;
+  top: 5px;
+}
+.comment .last .content {
+  border-bottom: 0 none;
+}
+.comment .content {
+  padding-bottom: 10px;
+  border-bottom: 1px solid rgba(0,0,0,.15);
+}
+
+.more {
+  text-align: center;
+  color: #777;
+  font-size: 14px;
+}
+
+.otherAlbum {
+  font-size: 12px;
+}
+.otherAlbum .flexBox {
+  justify-content: center;
+}
+.otherAlbum .albumItem {
+  width: 33%;
+  margin-right: 0.5%;
+}
+.otherAlbum .last {
+  margin-right: 0;
+}
+.otherAlbum .albumItem image{
+  width: 100%;
+  height: 124px;
+}
+.otherAlbum .albumName {
+  padding: 5px 8px 0;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+.otherAlbum .albumTime {
+  padding: 0 8px;
+}
+.otherAlbum .more {
+  margin: 20px 0;
 }

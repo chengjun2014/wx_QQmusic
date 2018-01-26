@@ -75,7 +75,7 @@
     <view>
       <text bindtap='search' data-key="{{special.key}}" class="hot-key special">{{special.key}}</text>
       <block wx:for="{{hotSearch}}" wx:key="unique2">
-        <text bindtap='search' data-key="{{item.k}}" class="hot-key" wx:if="{{index < 10}}">{{item.k}}</text>
+        <text bindtap='search' data-key="{{item.k}}" class="hot-key" wx:if="{{index < 20}}">{{item.k}}</text>
       </block>
     </view>
   </view>

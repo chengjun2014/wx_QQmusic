@@ -1,0 +1,4 @@
+/* pages/MV/index.wxss */
+.video {
+  height: 210px;
+}

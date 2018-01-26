@@ -1,1 +1,153 @@
-/* pages/singer/index.wxss */
+
+/* pages/singerAlbum/index.wxss */
+.top {
+  height: 274px;
+  position: relative;
+  overflow: hidden;
+}
+.top .albumBgImg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  transform: scale(1.1) translateZ(0);
+  object-fit: cover;
+  filter: blur(36px);
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+}
+.top .mask {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0,0,0,.5);
+  z-index: 0;
+}
+.top .downloadBar {
+  font-size: 15px;
+  height: 48px;
+  line-height: 48px;
+  padding: 0 16px 0 14px;
+  color: #fff;
+  background: rgba(0,0,0,.2);
+  position: relative;
+  z-index: 1;
+}
+.top .albumPic {
+  width: 125px;
+  height: 125px;
+  display: block;
+  margin-right: 10px;
+}
+
+.top .flexBox {
+  position: relative;
+  color: #fff;
+  z-index: 1;
+  padding: 18px 0 0 16px;
+  align-items: center;
+  font-size: 16px;
+}
+.top .flexBox .singer {
+  font-size: 14px;
+  padding: 8px 0 5px 0;
+}
+.top .flexBox .singer .singerPic, .top .flexBox .singer text {
+  vertical-align: middle;
+}
+.top .flexBox .desc {
+  font-size: 12px;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  max-height: 36px;  overflow: hidden;
+  margin-top: 8px;
+}
+.album {
+  color: #777;
+  font-size: 14px;
+}
+.album .subTitle {
+  height: 40px;
+  line-height: 40px;
+  padding: 0 16px;
+}
+.album .singerWrap {
+  font-size: 12px;
+}
+
+.album .index {
+  text-align: center;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  width: 45px;
+  -webkit-box-pack: center;
+  font-size: 16px;
+}
+.album .songName {
+  font-size: 16px;
+}
+.album .flexBox {
+  padding: 10px 0;
+}
+.albumInfo {
+  font-size: 14px;
+  color: #777;
+  padding: 0 16px;
+  line-height: 21px;
+}
+.title {
+  text-align: center;
+  font-size: 18px;
+  letter-spacing: 5px;
+  color: #000;
+  height: 55px;
+  line-height: 55px;
+}
+
+
+.more {
+  text-align: center;
+  color: #777;
+  font-size: 14px;
+}
+
+.otherAlbum {
+  font-size: 12px;
+}
+.otherAlbum .flexBox {
+  justify-content: center;
+  flex-wrap: wrap;
+}
+.otherAlbum .albumItem {
+  width: 33%;
+  margin-right: 0.5%;
+  margin-bottom: 15px;
+}
+.otherAlbum .last {
+  margin-right: 0;
+}
+.otherAlbum .albumItem image{
+  width: 100%;
+  height: 124px;
+}
+.MVAlbum .albumItem {
+  width: 49.75%;
+}
+.MVAlbum .albumItem image{
+  height: 105px;
+}
+.otherAlbum .albumName {
+  padding: 5px 8px 0;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+.otherAlbum .albumTime {
+  padding: 0 8px;
+}
+.otherAlbum .more {
+  margin: 20px 0;
+}

@@ -1,0 +1,4 @@
+<!--pages/MV/index.wxml-->
+<view class='video' style="background: url('http://shp.qpic.cn/qqvideo_ori/0/{{mvId}}_360_204/0') no-repeat; background-size: 100% 100%;"></view>
+
+<text>又要用到vkey这个不知道哪来的参数控制播放，没法做播放。</text>

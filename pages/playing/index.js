@@ -5,10 +5,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    src: '',
-    name: '红昭愿',
-    author: '不知道',
-    poster: []
+    
   },
 
   /**
@@ -17,10 +14,7 @@ Page({
   onLoad: function (options) {
     var _app = getApp();
     console.log(_app.globalData ,options, 'option')
-    this.setData({
-      src: 'http://isure.stream.qqmusic.qq.com/C100' + options.songId + '.m4a?fromtag=32',
-      poster: 'http://imgcache.qq.com/music/photo_new/T002R300x300M000003bSL0v4bpKAx.jpg'
-    })
+    
   },
 
   /**

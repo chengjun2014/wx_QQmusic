@@ -18,7 +18,7 @@
 - `navigationBar` 不能修改 `font-size` 样式；
 - 没有Vue插件丰富，比Vue好的地方是同一路由页面不会重复载入；
 - input 高度太小（20px）聚焦时placeholder莫名其妙的往上跳了一点点，24px不跳动；
-- 代码包大小上限为 2048 kb，实际项目需要删除demo.gif；
+- 代码包大小上限为 2048 kb，实际项目需要删除静态文件比如 演示GIF demo.gif；
 - input 如何做数据绑定？已解决参考搜索页面输入框源码；
 - 字符串拼接 `src="strA{{zhida.singermid}}strB"` 无需使用 `+` 号，注意被拼接字符串放在双引号内；
 - wxml中计算后的模板数据不支持`toFixed`函数格式化，需要引入[wxs模板](https://mp.weixin.qq.com/debug/wxadoc/dev/framework/view/wxs/01wxs-module.html)或标签封装一个函数，export出去；
@@ -27,6 +27,9 @@
 - template 模板标签数组参数传递(官网没有给实例，自己摸索出来的);
 - 小程序不支持before、after伪元素；
 - 小程序浏览器调试[工具](https://chemzqm.github.io/wept/#/home);
+- wxml无法处理时间戳格式化，只能在js里面处理；
+- 不要在wxml中拼接图片地址，控制台会报错，虽不影响功能但是很难看，js拼好统一解析；
+- vkey 不知道从哪里获取，音频和视频无法构造资源地址；
 
 
 

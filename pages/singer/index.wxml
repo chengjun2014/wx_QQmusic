@@ -1,2 +1,86 @@
 <!--pages/singer/index.wxml-->
-<text>pages/singer/index.wxml</text>
+<view class='top'>
+  <image class='albumBgImg' src="{{singermid}}"></image>
+  <view class="mask"></view>
+  <view class='downloadBar'>客户端下载引导（不想做了）</view>
+  <view class='flexBox'>
+    <image class='albumPic' src="{{singermid}}"></image>
+    <view class='flex'>
+      <text>{{albumInfo.singer_name}}</text>
+      <view class='singer'>
+        粉丝：{{albumInfo.fans}}
+      </view>
+      <text class='desc'>{{albumInfo.SingerDesc}}</text>
+    </view>
+  </view>
+</view>
+
+<template name="abc">
+  <view class='singerWrap'>
+  <block wx:for="{{array}}" wx:key="key">
+    <text><block wx:if="{{index > 0}}"> / </block>{{item.name}}</text>
+  </block>
+  </view>
+</template>
+
+<view class='album'>
+  <view class="subTitle">
+    <text>歌曲 共{{albumInfo.total}}首</text>
+  </view>
+  <block wx:for="{{albumInfo.list}}" wx:key="n">
+    <view class='flexBox flexCenter'>
+      <text class='index'>{{index + 1}}</text>
+      <view class='flex'>
+        <view class='songName'>{{item.musicData.songname}}</view>
+        <template is="abc" data="{{array: item.musicData.singer}}" />
+      </view>
+    </view>
+  </block>
+
+  <block wx:if="{{albumInfo.list.length < albumInfo.total}}">
+    <navigator class='more'>点击加载更多歌曲>></navigator>
+  </block>
+</view>
+
+
+<block wx:if="{{albumInfo.albumlist.length > 0}}">
+<view class='otherAlbum'>
+  <view class='title'>最新专辑</view>
+  <view class='flexBox'>
+    <block wx:for="{{albumInfo.albumlist}}" wx:key="album">
+      <view class="albumItem {{(index+1)%3 == 0 ? 'last' : ''}}">
+        <navigator url="./index?albumId={{item.albummid}}">
+          <image src='{{item.pic}}'></image>
+          <view class='albumName'>{{item.name}}</view>
+          <view class='albumTime'>{{item.publish_date}}</view>
+        </navigator>
+      </view>
+    </block>
+  </view>
+
+  <block wx:if="{{albumInfo.albumlist.length < albumInfo.albumTotal}}">
+    <navigator class='more'>查看全部{{albumInfo.albumTotal}}张专辑>></navigator>
+  </block>
+</view>
+</block>
+
+
+<block wx:if="{{albumInfo.albumlist.length > 0}}">
+<view class='otherAlbum MVAlbum'>
+  <view class='title'>最新MV</view>
+  <view class='flexBox'>
+    <block wx:for="{{albumInfo.mvlist}}" wx:key="album">
+      <view class="albumItem {{(index+1)%2 == 0 ? 'last' : ''}}">
+        <navigator url="../MV/index?mvId={{item.vid}}">
+          <image src='https://shp.qpic.cn/qqvideo_ori/0/{{item.vid}}_360_204/0'></image>
+          <view class='albumName'>{{item.title}}</view>
+        </navigator>
+      </view>
+    </block>
+  </view>
+
+  <block wx:if="{{albumInfo.mvlist.length < albumInfo.mvTotal}}">
+    <navigator class='more'>查看全部{{albumInfo.mvTotal}}个MV>></navigator>
+  </block>
+</view>
+</block>

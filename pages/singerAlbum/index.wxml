@@ -1,35 +1,96 @@
 <!--pages/singerAlbum/index.wxml-->
 <view class='top'>
-  <image class='albumBgImg' src="https://y.gtimg.cn/music/photo_new/T002R150x150M000{{albumPic}}.jpg?max_age=2592000"></image>
+  <image class='albumBgImg' src="{{mid}}"></image>
   <view class="mask"></view>
   <view class='downloadBar'>客户端下载引导（不想做了）</view>
   <view class='flexBox'>
-    <image class='albumPic' src="https://y.gtimg.cn/music/photo_new/T002R150x150M000{{albumPic}}.jpg?max_age=2592001"></image>
+    <image class='albumPic' src="{{mid}}"></image>
     <view class='flexItem'>
-      <text>{{albumName}}</text>
+      <text>{{albumInfo.name}}</text>
       <view class='singer'>
-        <image class='singerPic' src='https://y.gtimg.cn/music/photo_new/T001R150x150M000{{singerPic}}.jpg?max_age=2592002'></image>{{singerName}}
+        <image class='singerPic' src='{{singermid}}'></image>{{albumInfo.singername}}
       </view>
       
-      <text class='time'>发行时间：{{posterTime}}</text>
+      <text class='time'>发行时间：{{albumInfo.aDate}}</text>
     </view>
   </view>
 </view>
 
-<view class='album'>
-  <view class="title">
-    <text>专辑 共{{list.length}}首</text>
+<template name="abc">
+  <view class='singerWrap'>
+  <block wx:for="{{array}}" wx:key="key">
+    <text><block wx:if="{{index > 0}}"> / </block>{{item.name}}</text>
+  </block>
   </view>
+</template>
+
+<view class='album'>
+  <view class="subTitle">
+    <text>专辑 共{{albumInfo.list.length}}首</text>
+  </view>
+  <block wx:for="{{albumInfo.list}}" wx:key="n">
+    <block wx:if="{{index < 3}}">
+      <view class='flexBox flexCenter'>
+        <text class='index'>{{index + 1}}</text>
+        <view class='flex'>
+          <view class='songName'>{{item.songname}}</view>
+          <template is="abc" data="{{array: item.singer}}" />
+        </view>
+      </view>
+    </block>
+  </block>
 </view>
+
 
 <view class='albumInfo'>
-
+  <view class='title'>专辑简介</view>
+  <text>{{albumInfo.desc}}</text>
 </view>
 
+<block wx:if="{{commentTotal > 0}}">
 <view class='comment'>
+  <view class='title'>精彩评论</view>
+  <block wx:for="{{commentList}}" wx:key="m">
+    <block wx:if="{{index < 3}}">
+      <view class="flexBox {{(index == 2 || index == commentList.length - 1) ? 'last' : ''}}">
+        <image src='{{item.avatarurl}}' class='commentUser'></image>
+        <view class='commentInfo flex'>
+          <view class='header'>
+            <view class='commentName'>{{item.nick}}</view>
+            <view>{{item.formmattedTime}}</view>
+            <view class='supportNum'>{{item.praisenum}}</view>
+          </view>
+          <view class='content'>{{item.rootcommentcontent}}</view>
+        </view>
+      </view>
+    </block>
+  </block>
 
+  <block wx:if="{{commentTotal > 3}}">
+    <navigator class='more'>查看全部评论>></navigator>
+  </block>
 </view>
+</block>
 
+<block wx:if="{{albumInfo.otherAlbums.length > 0}}">
 <view class='otherAlbum'>
+  <view class='title'>该歌手的其他专辑</view>
+  <view class='flexBox'>
+    <block wx:for="{{albumInfo.otherAlbums}}" wx:key="album">
+      <block wx:if="{{index < 3}}">
+      <view class="albumItem {{index == 2 ? 'last' : ''}}">
+        <navigator url="./index?albumId={{item.albumMid}}">
+          <image src='https://y.gtimg.cn/music/photo_new/T002R150x150M000{{item.albumMid}}.jpg?max_age=2592000'></image>
+          <view class='albumName'>{{item.title}}</view>
+          <view class='albumTime'>{{item.pubDate}}</view>
+        </navigator>
+      </view>
+      </block>
+    </block>
+  </view>
 
+  <block wx:if="{{albumInfo.otherAlbums.length > 2}}">
+    <navigator class='more'>查看歌手更多专辑>></navigator>
+  </block>
 </view>
+</block>

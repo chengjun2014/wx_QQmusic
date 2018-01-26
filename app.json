@@ -6,7 +6,8 @@
     "pages/album/index",
     "pages/playing/index",
     "pages/singer/index",
-    "pages/singerAlbum/index"
+    "pages/singerAlbum/index",
+    "pages/MV/index"
   ],
   "window": {
     "backgroundTextStyle": "light",

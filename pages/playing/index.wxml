@@ -1,2 +1,2 @@
 <!--pages/playing/index.wxml-->
-<audio poster="{{poster}}" name="{{name}}" author="{{author}}" src="{{src}}" controls></audio>
+<text>歌曲播放地址不稳定，不做了</text>
