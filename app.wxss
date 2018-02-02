@@ -22,3 +22,11 @@
   white-space: nowrap;
   text-overflow: ellipsis;
 }
+.title {
+  text-align: center;
+  font-size: 16px;
+  letter-spacing: 2px;
+  color: #000;
+  height: 55px;
+  line-height: 55px;
+}

@@ -72,7 +72,8 @@ Page({
         outCharset: 'utf-8',
         notice: 0,
         platform: 'h5',
-        needNewCode: 1
+        needNewCode: 1,
+        _: 1517216136574
       },
       success: function(res) {
         if (res.statusCode == 200) {

@@ -49,7 +49,7 @@
   <view class='flexBox'>
     <block wx:for="{{albumInfo.albumlist}}" wx:key="album">
       <view class="albumItem {{(index+1)%3 == 0 ? 'last' : ''}}">
-        <navigator url="./index?albumId={{item.albummid}}">
+        <navigator url="./../singerAlbum/index?albumId={{item.albummid}}">
           <image src='{{item.pic}}'></image>
           <view class='albumName'>{{item.name}}</view>
           <view class='albumTime'>{{item.publish_date}}</view>

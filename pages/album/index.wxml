@@ -16,10 +16,10 @@
 
 <view class='song-wrap' style="background-color: {{color}}">
   <block wx:for="{{songList}}" wx:key="u">
-    <navigator class="song-item flexBox" url="../playing/index?songId={{item.data.songmid}}">
+    <navigator class="song-item flexBox" url="../playing/index?songId={{item.data.songid}}&songMid={{item.data.songmid}}">
       <view class='index flexCenter'>{{index + 1}}</view>
       <view class='flex flex-content'>
-        <view class='songname'>{{item.data.songname}}</view>
+        <view class='songname nowrap'>{{item.data.songname}}</view>
         <view class='songExt nowrap'>
           <template is="abc" data="{{array: item.data.singer}}" />
            · {{item.data.albumname}}
@@ -30,4 +30,7 @@
       </view>
     </navigator>
   </block>
+
+  <view class='title'>简介</view>
+  <text class='extInfo'>{{topInfo.info}}</text>
 </view>

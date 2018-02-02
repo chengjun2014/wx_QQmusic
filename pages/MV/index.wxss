@@ -2,3 +2,69 @@
 .video {
   height: 210px;
 }
+.wrap {
+  padding: 12px 16px;
+}
+.title {
+  text-align: center;
+  font-size: 16px;
+  letter-spacing: 2px;
+  color: #000;
+  height: 55px;
+  line-height: 55px;
+}
+.MVTitle {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    max-height: 44px;
+    line-height: 1.4;
+    margin: 12px 20px 5px 0;
+    overflow: hidden;
+    font-size: 16px;
+    font-weight: 400;
+}
+.extend, .MVdesc {
+  font-size: 12px;
+  color: gray;
+}
+
+
+.mvListWrap {
+  margin-left: -16px;
+}
+.mvListWrap .mvItem{
+  position: relative;
+  margin-bottom: 4px;
+  overflow: hidden;
+  align-items: center;
+}
+.mvListWrap .mvItem .mvImage {
+  width: 120px;
+  height: 67.5px;
+}
+.mvListWrap .mvItem .playCount {
+  position: absolute;
+  width: 120px;
+  height: 25px;
+  line-height: 25px;
+  text-indent: 12px;
+  left: 0;
+  bottom: 0;
+  color: #fff;
+  font-size: 12px;
+  background:-webkit-linear-gradient(top,rgba(0,0,0,0),rgba(0,0,0,.5));
+}
+.mvListWrap .mvItem .mvInfo {
+  flex: 1;
+  font-size: 16px;
+  margin-left: 10px;
+}
+.mvListWrap .mvItem .mvInfo .mvName {
+  display: block;
+}
+.mvListWrap .mvItem .mvInfo .uploader {
+  display: block;
+  font-size: 12px;
+  color: gray;
+}

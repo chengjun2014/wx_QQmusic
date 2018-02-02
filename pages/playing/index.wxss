@@ -1,1 +1,17 @@
 /* pages/playing/index.wxss */
+page {
+  height: 100%;
+}
+.wrap {
+  height: 100%;
+  position: relative;
+}
+.bgMask {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  filter: blur(15px);
+  transform: scale(1.15);
+}

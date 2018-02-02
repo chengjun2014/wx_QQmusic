@@ -1,4 +1,43 @@
-<!--pages/MV/index.wxml-->
+<wxs module="format" src="../utils/tool.wxs"></wxs>
+
+<template name="singer">
+  <block wx:for="{{array}}" wx:key="key">
+    <text class='uploader'><block wx:if="{{index > 0}}"> / </block>{{item.name}}</text>
+  </block>
+</template>
+
 <view class='video' style="background: url('http://shp.qpic.cn/qqvideo_ori/0/{{mvId}}_360_204/0') no-repeat; background-size: 100% 100%;"></view>
 
-<text>又要用到vkey这个不知道哪来的参数控制播放，没法做播放。</text>
+<view class='wrap'>
+  <view class='MVTitle' bindtap='showDesc'>{{info.mvname}}</view>
+  <view class='extend'>{{format.toFixed(info.listennum)}}次播放 {{info.pubdate}}</view>
+  <text class='MVdesc' wx:if="{{showDesc}}">{{info.desc}}</text>
+
+  <view class='title'>粉丝上传视频</view>
+  <view class='mvListWrap'>
+    <block wx:for="{{info.fanmvlist.list}}" wx:key="list">
+      <view wx:if="{{index < 3}}" class='mvItem flexBox'>
+        <image class='mvImage' src="{{item.picurl}}"></image>
+        <text class='playCount'>{{format.toFixed(item.play_cnt)}}</text>
+        <view class='mvInfo nowrap'>
+          <text class='mvName nowrap'>{{item.name}}</text>
+          <text class='uploader'>{{item.uploader}}</text>
+        </view>
+      </view>
+    </block>
+  </view>
+
+  <view class='title'>同艺人的其他MV</view>
+  <view class='mvListWrap'>
+    <block wx:for="{{info.singermvlist.list}}" wx:key="list">
+      <view wx:if="{{index < 3}}" class='mvItem flexBox'>
+        <image class='mvImage' src="{{item.picurl}}"></image>
+        <text class='playCount'>{{format.toFixed(item.play_cnt)}}</text>
+        <view class='mvInfo nowrap'>
+          <text class='mvName nowrap'>{{item.name}}</text>
+          <template is="singer" data="{{array: item.singers}}" />
+        </view>
+      </view>
+    </block>
+  </view>
+</view>

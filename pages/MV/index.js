@@ -5,7 +5,15 @@ Page({
    * 页面的初始数据
    */
   data: {
-    mvId: ''
+    mvId: '',
+    info: {},
+    showDesc: false
+  },
+
+  showDesc: function() {
+    this.setData({
+      showDesc: !this.data.showDesc
+    })
   },
 
   /**
@@ -13,6 +21,7 @@ Page({
    */
   onLoad: function (options) {
     console.log(options, 'mv options');
+    var _this = this;
     this.setData({
       mvId: options.mvId
     });
@@ -36,7 +45,11 @@ Page({
         _: 1516933251844
       },
       success: function(res) {
-        console.log(res, 'res success')
+        var _info = res.data.data;
+        console.log(_info, 'res success')
+        _this.setData({
+          info: _info
+        })
       }
     })
   },

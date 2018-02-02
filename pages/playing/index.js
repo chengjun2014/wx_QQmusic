@@ -5,16 +5,17 @@ Page({
    * 页面的初始数据
    */
   data: {
-    
+    bgImg: ''
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    var _app = getApp();
-    console.log(_app.globalData ,options, 'option')
-    
+    console.log(options, 'options')
+    this.setData({
+      bgImg: 'http://y.gtimg.cn/music/photo_new/T002R300x300M000' + options.songMid + '.jpg'
+    });
   },
 
   /**

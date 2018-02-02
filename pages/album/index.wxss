@@ -55,4 +55,10 @@
   font-size: 14px;
   color: hsla(0,0%,100%,.6);
 }
+.song-wrap .title {
+  color: #fff;
+}
+.song-wrap .extInfo {
+  font-size: 14px;
+}
 
