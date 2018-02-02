@@ -9,7 +9,7 @@
   <image class='bg_img' src="{{topInfo.pic_album}}"></image>
   <view class='mask' style="color:{{color}}"></view>
   <view class='top'>
-    <view class='title'>{{topInfo.ListName}}</view>
+    <view class='albumTitle'>{{topInfo.ListName}}</view>
     {{updateTime}} 更新
   </view>
 </view>

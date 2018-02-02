@@ -28,7 +28,7 @@
   color: #fff;
   font-size: 14px;
 }
-.topInfo .top .title {
+.topInfo .top .albumTitle {
   font-size: 24px;
 }
 
