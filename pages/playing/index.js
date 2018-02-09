@@ -5,17 +5,40 @@ Page({
    * 页面的初始数据
    */
   data: {
-    bgImg: ''
+    lat: 23.099994,
+    lng: 113.324520,
+    scale: 13,
+    polyline: [],
+    markers: [],
+    controls: []
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    console.log(options, 'options')
-    this.setData({
-      bgImg: 'http://y.gtimg.cn/music/photo_new/T002R300x300M000' + options.songMid + '.jpg'
-    });
+    var _this = this;
+
+    wx.getLocation({
+      type: 'wgs84',
+      success: function(res) {
+        _this.setData({
+          lat: res.latitude,
+          lng: res.longitude
+        });
+
+        
+      },
+    })
+    
+  },
+
+  controltap: function() {
+
+  },
+
+  regionchange: function(res) {
+    console.log(res);
   },
 
   /**

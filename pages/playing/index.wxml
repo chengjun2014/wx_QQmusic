@@ -1,5 +1,2 @@
 <!--pages/playing/index.wxml-->
-<text>播放页面播放歌曲的vkey不知道如何获取不做了，看看其他页面吧</text>
-<view class='wrap'>
-  <view class='bgMask' style='background: url({{bgImg}})'></view>
-</view>
+<map id="map" longitude="{{lng}}" latitude="{{lat}}" scale="{{scale}}" controls="{{controls}}" bindcontroltap="controltap" markers="{{markers}}" bindmarkertap="markertap" polyline="{{polyline}}" bindregionchange="regionchange" show-location></map>
