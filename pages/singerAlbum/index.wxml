@@ -60,7 +60,7 @@
             <view>{{item.formmattedTime}}</view>
             <view class='supportNum'>{{item.praisenum}}</view>
           </view>
-          <view class='content'>{{item.rootcommentcontent}}</view>
+          <view class='content'><text>{{item.rootcommentcontent}}</text></view>
         </view>
       </view>
     </block>
