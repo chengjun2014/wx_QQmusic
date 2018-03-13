@@ -1,0 +1,7 @@
+<template name="abc">
+  <view class='singerWrap'>
+  <block wx:for="{{array}}" wx:key="key">
+    <text><block wx:if="{{index > 0}}"> / </block>{{item.name}}</text>
+  </block>
+  </view>
+</template>

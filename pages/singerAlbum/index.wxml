@@ -1,4 +1,6 @@
 <!--pages/singerAlbum/index.wxml-->
+<import src="../template/tmpl.wxml" />
+
 <view class='top'>
   <image class='albumBgImg' src="{{mid}}"></image>
   <view class="mask"></view>
@@ -15,14 +17,6 @@
     </view>
   </view>
 </view>
-
-<template name="abc">
-  <view class='singerWrap'>
-  <block wx:for="{{array}}" wx:key="key">
-    <text><block wx:if="{{index > 0}}"> / </block>{{item.name}}</text>
-  </block>
-  </view>
-</template>
 
 <view class='album'>
   <view class="subTitle">

@@ -18,7 +18,7 @@ Page({
     wx.request({
       url: 'https://c.y.qq.com/v8/fcg-bin/fcg_v8_singer_track_cp.fcg',
       data: {
-        singermid: '0025NhlN2yWrP4',
+        singermid: options.singerId,
         g_tk: 5381,
         uin: 0,
         format: 'json',
