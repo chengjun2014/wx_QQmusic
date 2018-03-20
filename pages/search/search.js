@@ -34,12 +34,16 @@ Page({
     // input点击完成按钮时触发搜索，event.detail = { value: value }
     // 快捷操作点击推荐热搜词时 触发搜索 ev.target.dataset
     // this.data.key 滚动时触发搜索使用这个
+    // ev.detail.value用户手动输入使用 ev.target.dataset.key用户点击推荐使用
     var key = (ev.detail.value || ev.target.dataset.key || this.data.key).trim();
     var that = this;
     if (key === '') {
       return;
     }
+    // 还是有个bug
 
+    // console.log(ev, 'ev');
+    // console.log("key= ", key, "this.data.key= ",this.data.key)
     if (key != this.data.key) { // 执行一次新的搜索
       this.setData({
         finish: false,
@@ -122,7 +126,7 @@ Page({
 
         } else {
           wx.showToast({
-            title: '获取'+key+'搜索失败！'
+            title: '获取'+key+'搜索结果失败！'
           });
         }
       }
